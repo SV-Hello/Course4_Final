@@ -4,9 +4,18 @@
     <head>
         <title>Travelbloom</title>
         <style>
+            html { 
+                background: url(pines.jpg) no-repeat center center fixed; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            
             .navbar{
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 background-color: #0000FF;
                 padding: 10px 20px;
                 color: white;
@@ -20,7 +29,23 @@
                 margin: 10px;
             }
 
-            .navbar img {
+            .navbar-left, .navbar-center, .navbar-right {
+                display: flex;
+                align-items: center;
+            }
+
+            .navbar-center a {
+               margin: 0 15px;
+               font-weight: bold;
+               color: white;
+            }
+
+            .navbar-left span {
+                font-weight: bold;
+                font-size: 30px;
+            }
+
+            .navbar-left img {
                 height: 40px;
                 margin-right: 10px;
             }
@@ -33,30 +58,60 @@
                 margin: 10px;
             }
 
-            .nav-right {
-                float: right;
+            .section {
+                color:white;
+                font-family: "Trebuchet MS";
+                font-size: 30px;
+            }
+
+            .section h6 {
+                font-style:italic;
+                padding-left: 1.5in;
+                width: 6in;
+            }
+            
+            .section h1{
+                width: 5in;
+                padding-left: 1.5in;
             }
         </style>
-
     </head>
 
     <body>
         <div class = "navbar">
-            <img src="logo.png" alt="Logo">
-            <span class="name">Travelbloom</span>
 
-            <ul>
-                <li><a href="#Home">Home</a></li>
-                <li><a href="#AboutUs">About Us</a></li>
-                <li><a href="#ContactUs">Contact Us</a></li>
-            </ul>
+            <div class="navbar-left">
+                <img src="logo.png" alt="Logo">
+                <span class="name">Travelbloom</span>
+            </div>
             
-            <div class = "nav-right">
+            <div class="navbar-center">
+                <a href="#Home">Home</a>
+                <a href="#AboutUs">About Us</a>
+                <a href="#ContactUs">Contact Us</a>
+            </div>
+            
+            <div class="navbar-right">
                 <input type="text" placeholder="Search..">
-
                 <button type="button">Search</button> 
                 <button type="button">Reset</button> 
             </div>
+        </div>
+
+
+        <div id = "home" class = "section">
+            <h1>FIND YOUR ADVENTURE!</h1>
+            <h6>Break from the doldrums of the regular day and explore the world as it was meant to be seen. The adventure of a lifetime is just a few clicks of away!</h6>
+        </div>
+
+        <div id = "about-us" class = "section" style="display: none;">
+            <h1>ABOUT US</h1>
+            <h6>Welcome to the Hyperion Core! We are a team of like-minded friends who really really enjoy vacations. We want you to enjoy vacations nearly as much as we do, so we put in our maximum effort to get our loyal customers the best experience we possibly can. Meet some of our team members right below!</h6>
+        </div>
+
+        <div id = "contact-us" class = "section" style="display: none;">
+            <h1>CONTACT US</h1>
+            <h6>Have any questions? We'll be glad to hear them!</h6>
         </div>
     </body>
 </html>
