@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Travelbloom</title>
+        <title>HyperionCore</title>
         <style>
             html { 
                 background: url(pines.jpg) no-repeat center center fixed; 
@@ -12,6 +12,14 @@
                 background-size: cover;
             }
             
+            .row {
+                display: inline-flex;
+                width: 20%;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+            }
+
             .navbar{
                 display: flex;
                 align-items: center;
@@ -74,6 +82,30 @@
                 width: 5in;
                 padding-left: 1.5in;
             }
+            
+            .team-list {
+                padding-left: 2.5in;
+            }
+
+            .msg {
+                background-color: rgba(255,255,255,0.5)
+            }
+
+            .resultContainer {
+                background: rgba(255,255,255,0.5);
+                padding-left: 1.5in;
+                color:white;
+                font-size: 30px;
+                font-style:italic;
+            }
+
+            input[type="text"] {
+                padding: 5px;
+                font-size: 1rem;
+                width: 180px;
+                height: 20px;
+            }
+
         </style>
     </head>
 
@@ -82,7 +114,7 @@
 
             <div class="navbar-left">
                 <img src="logo.png" alt="Logo">
-                <span class="name">Travelbloom</span>
+                <span class="name">HyperionCore</span>
             </div>
             
             <div class="navbar-center">
@@ -92,11 +124,14 @@
             </div>
             
             <div id = "search" class="navbar-right">
-                <input type="text" placeholder="Search..">
-                <button type="button">Search</button> 
-                <button type="button">Reset</button> 
+                <input id = "input-search" type="text" placeholder="Search..">
+                <button id = "btn-search" type="button">Search</button> 
+                <button id = "btn-clear" type="button">Clear</button> 
             </div>
         </div>
+
+        <div id="output"></div>
+        <script src="travel_recommendation.js"></script>
 
 
         <div id = "home" class = "section">
@@ -104,15 +139,14 @@
             <h6>Break from the doldrums of the regular day and explore the world as it was meant to be seen. The adventure of a lifetime is just a few clicks of away!</h6>
         </div>
 
+        <div id="resultContainer" class = "resultContainer"></div>
+
         <div id = "about-us" class = "section" style="display: none;">
             <h1>ABOUT US</h1>
             <h6>Welcome to the Hyperion Core! We are a team of like-minded friends who really really enjoy vacations. We want you to enjoy vacations nearly as much as we do, so we put in our maximum effort to get our loyal customers the best experience we possibly can. Meet some of our team members right below!</h6>
-
+            <h3>Our Team</h3>
             <div class = "team-list">
-                <h3>Our Team</h3>
-
                 <h4>Jimmy Bob [CEO]</h4>
-                
                 
                 <h4>Monroe Deleware [CIO]</h4>
                 
@@ -123,23 +157,36 @@
         <div id = "contact-us" class = "section" style="display: none;">
             <h1>CONTACT US</h1>
             <h6>Have any questions? We'll be glad to hear them!</h6>
-       
-            <h6>Name:</h6>
-            <input type="text" placeholder="John Doe"><br/>
-            <h6>Email:</h6>
-            <input type="text" placeholder="johndoe@gmail.com"><br/>
-            <h6>Message:</h6>
-            <input type="text" placeholder="Enter a message!" size="50"><br/>
+            
+            <div class="row">
+                <h6>Name:</h6>
+                <input type="text" class = msg placeholder="John Doe">
+            </div>
+            </br>
+            <div class="row">
+                <h6>Email:</h6>
+                <input type="text" class = msg placeholder="johndoe@gmail.com">
+            </div>
+            </br>
+            <div class="row">
+                <h6>Message:</h6>
+                <textarea id= "messagebox" class = msg placeholder="Enter a message!" rows = 20 cols = 30></textarea>
+            </div>
+            <div>
+                <button type="button">Submit</button>
+            </div>
         </div>
+        
 
         <script>
             function showSection(sectionId) {
-                // Hide all sections
+                
                 document.getElementById("search").style.display = 'none';
                 document.querySelectorAll('.section').forEach(section => {
                     section.style.display = 'none';
                 });
-                // Display the selected section
+                document.getElementById('resultContainer').innerHTML = '';
+
                 document.getElementById(sectionId).style.display = 'block';
 
                 if(sectionId == "home") {
